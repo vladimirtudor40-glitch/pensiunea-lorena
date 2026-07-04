@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pensiunea Lorena · Sohodol – Bran | Grădină cu iaz, la 5 minute de Castel</title>
+<meta name="description" content="Pensiunea Lorena, Sohodol – Bran. Casă liniștită cu grădină mare, iaz cu pești, foișor și camere cu baie proprie. Booking 9.0/10 · Google 4.7/5. Rezervări: 0773 927 082.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,420;0,9..144,560;1,9..144,380;1,9..144,460&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   PENSIUNEA LORENA — „Jurnal de grădină”
+   Paletă: hârtie verzuie / brad / ferigă / iaz / gălbenele
+   ============================================================ */
+:root{
+  --hartie:#F1F3E8;
+  --hartie-2:#E6EBD6;
+  --brad:#1F3327;
+  --brad-adanc:#152419;
+  --feriga:#4A7354;
+  --iaz:#2E6B77;
+  --iaz-adanc:#16414C;
+  --galbenele:#DC9A3E;
+  --floare:#C0705F;
+  --linie:rgba(31,51,39,.16);
+  --alb-apa:#F6F8F0;
+  --ff-display:"Fraunces",Georgia,serif;
+  --ff-text:"Instrument Sans",system-ui,sans-serif;
+  --ff-mana:"Caveat",cursive;
+  --tranz:cubic-bezier(.22,.8,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--ff-text);
+  background:var(--hartie);
+  color:var(--brad);
+  font-size:17px;
+  line-height:1.65;
+  overflow-x:hidden;
+}
+::selection{background:var(--galbenele);color:var(--brad-adanc)}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--iaz);outline-offset:3px;border-radius:4px}
+
+/* ---------- utilitare ---------- */
+.invelis{max-width:1180px;margin:0 auto;padding:0 clamp(20px,4vw,48px)}
+.eticheta{
+  font-size:.8rem;
+  font-weight:600;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--feriga);
+  display:inline-flex;align-items:center;gap:.9em;
+}
+.eticheta::before{
+  content:"";width:34px;height:2px;background:var(--feriga);
+  border-radius:2px;opacity:.55;
+}
+.titlu-sectiune{
+  font-family:var(--ff-display);
+  font-weight:420;
+  font-size:clamp(2rem,4.4vw,3.3rem);
+  line-height:1.08;
+  letter-spacing:-.01em;
+  margin:.35em 0 .5em;
+}
+.titlu-sectiune em{
+  font-style:italic;font-weight:460;color:var(--iaz);
+}
+[data-reveal]{
+  opacity:0;transform:translateY(26px);
+  transition:opacity .9s var(--tranz),transform .9s var(--tranz);
+  transition-delay:var(--intarziere,0s);
+}
+[data-reveal].vizibil{opacity:1;transform:none}
+
+/* ---------- navigație ---------- */
+.nav{
+  position:fixed;top:14px;left:50%;transform:translateX(-50%);
+  width:min(1180px,calc(100% - 28px));
+  z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 20px;
+  border-radius:16px;
+  background:rgba(241,243,232,.82);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border:1px solid transparent;
+  transition:border-color .4s,box-shadow .4s;
+}
+.nav.compact{
+  border-color:var(--linie);
+  box-shadow:0 12px 34px rgba(21,36,25,.10);
+}
+@keyframes nav-intra{
+  from{transform:translate(-50%,-18px);opacity:0}
+  to{transform:translate(-50%,0);opacity:1}
+}
+.nav{animation:nav-intra .9s var(--tranz) .15s both}
+.marca{
+  display:flex;align-items:center;gap:10px;
+  text-decoration:none;
+}
+.marca svg{width:34px;height:34px}
+.marca-nume{
+  font-family:var(--ff-display);
+  font-weight:560;font-size:1.28rem;letter-spacing:.01em;
+}
+.marca-nume span{color:var(--feriga);font-style:italic;font-weight:380}
+.nav-linkuri{display:flex;align-items:center;gap:clamp(14px,2.4vw,30px);list-style:none}
+.nav-linkuri a{
+  text-decoration:none;font-weight:500;font-size:.95rem;
+  color:var(--brad);opacity:.82;
+  transition:opacity .2s,color .2s;
+}
+.nav-linkuri a:hover{opacity:1;color:var(--iaz)}
+/* underline animat + secțiunea activă */
+.nav-linkuri a:not(.btn-tel){position:relative;padding:6px 1px}
+.nav-linkuri a:not(.btn-tel)::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:2px;
+  background:var(--iaz);border-radius:2px;
+  transform:scaleX(0);transform-origin:right;
+  transition:transform .35s var(--tranz);
+}
+.nav-linkuri a:not(.btn-tel):hover::after,
+.nav-linkuri a.activ::after{transform:scaleX(1);transform-origin:left}
+.nav-linkuri a.activ{color:var(--iaz);opacity:1}
+.btn-tel{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--brad);color:var(--hartie)!important;
+  padding:9px 18px;border-radius:99px;
+  text-decoration:none;font-weight:600;font-size:.92rem;
+  opacity:1!important;
+  transition:background .25s,transform .25s;
+}
+.btn-tel:hover{background:var(--iaz-adanc);transform:translateY(-1px)}
+.btn-tel svg{width:15px;height:15px}
+.nav-tel-text{display:inline}
+/* ---------- meniu mobil ---------- */
+.burger{
+  display:none;
+  background:none;border:0;cursor:pointer;
+  width:44px;height:44px;
+  flex-direction:column;align-items:center;justify-content:center;gap:5px;
+  border-radius:10px;
+}
+.burger span{
+  width:22px;height:2px;background:var(--brad);border-radius:2px;
+  transition:transform .3s var(--tranz),opacity .3s;
+}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.meniu-mobil{
+  position:fixed;inset:0;z-index:40;
+  background:
+    radial-gradient(120% 90% at 85% 0%,rgba(46,107,119,.5),transparent 60%),
+    linear-gradient(165deg,#152419 0%,#1B3A2C 55%,#16414C 100%);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;
+  padding:env(safe-area-inset-top) 20px env(safe-area-inset-bottom);
+  overflow:hidden;
+  opacity:0;visibility:hidden;
+  transition:opacity .4s var(--tranz),visibility .4s;
+}
+.meniu-mobil.deschis{opacity:1;visibility:visible}
+.meniu-mobil a{
+  font-family:var(--ff-display);font-weight:420;
+  font-size:clamp(1.6rem,6.4vw,2.2rem);
+  color:var(--alb-apa);text-decoration:none;
+  padding:11px 26px;min-height:44px;
+  display:inline-flex;align-items:center;gap:14px;
+  opacity:0;transform:translateX(-26px);
+  transition:opacity .45s var(--tranz),transform .45s var(--tranz),color .25s,letter-spacing .3s;
+  transition-delay:var(--d,0s);
+}
+.meniu-mobil.deschis a{opacity:1;transform:none}
+.meniu-mobil a::before{
+  content:"";width:0;height:2px;background:var(--galbenele);border-radius:2px;
+  transition:width .3s var(--tranz);
+}
+.meniu-mobil a:hover,.meniu-mobil a:active{color:var(--galbenele)}
+.meniu-mobil a:hover::before,.meniu-mobil a:active::before{width:22px}
+.meniu-mobil .meniu-tel{
+  font-family:var(--ff-text);font-weight:600;font-size:1.05rem;
+  margin-top:26px;
+  background:var(--galbenele);color:var(--brad-adanc);
+  border-radius:99px;padding:15px 32px;
+  box-shadow:0 16px 40px rgba(220,154,62,.3);
+}
+.meniu-mobil .meniu-tel::before{display:none}
+.meniu-mobil .meniu-tel:hover,.meniu-mobil .meniu-tel:active{color:var(--brad-adanc);opacity:.92}
+/* peștele decorativ din fundalul meniului */
+.meniu-peste{
+  position:absolute;bottom:9%;left:0;
+  width:64px;height:auto;opacity:.4;
+  animation:peste-meniu 16s linear infinite;
+  pointer-events:none;
+}
+@keyframes peste-meniu{
+  from{transform:translateX(-90px) translateY(0)}
+  45%{transform:translateX(45vw) translateY(-14px)}
+  to{transform:translateX(105vw) translateY(0)}
+}
+@media(max-width:900px){
+  .nav-linkuri li:not(.nav-li-tel){display:none}
+  .nav-tel-text{display:none}
+  .btn-tel{padding:9px 13px}
+  .burger{display:flex}
+}
+
+/* ---------- HERO ---------- */
+.erou{
+  position:relative;
+  min-height:100svh;
+  display:flex;flex-direction:column;
+  background:var(--iaz-adanc);
+  isolation:isolate;
+}
+.erou-foto{position:absolute;inset:0;z-index:-1;overflow:hidden}
+.erou-foto picture{display:block;width:100%;height:100%}
+.erou-foto img{width:100%;height:100%;object-fit:cover;object-position:center 62%}
+.erou-foto::after{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 62% 78% at 26% 56%,rgba(9,18,12,.74) 0%,rgba(9,18,12,.48) 48%,rgba(9,18,12,0) 78%),
+    linear-gradient(92deg,rgba(16,30,21,.38) 0%,rgba(16,30,21,.12) 58%,rgba(16,30,21,.04) 82%),
+    linear-gradient(180deg,rgba(16,30,21,.32) 0%,rgba(16,30,21,.10) 45%,rgba(28,78,90,.58) 84%,#1C4E5A 100%);
+}
+/* textul direct pe fotografie: vinietă radială în overlay + halo pe litere */
+.erou-caseta{max-width:680px}
+.erou-eticheta{
+  font-size:.8rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:#F3D695;
+  display:inline-flex;align-items:center;gap:.9em;
+  text-shadow:0 1px 3px rgba(8,16,11,.9),0 2px 14px rgba(8,16,11,.7);
+}
+.erou-eticheta::before{content:"";width:34px;height:2px;background:#F3D695;border-radius:2px;opacity:.8;box-shadow:0 1px 6px rgba(8,16,11,.8)}
+.erou h1{
+  color:#FFFFFF;
+  text-shadow:
+    0 1px 2px rgba(8,16,11,.85),
+    0 3px 16px rgba(8,16,11,.7),
+    0 10px 54px rgba(8,16,11,.55);
+}
+.erou h1 em{
+  color:#D8F3DF;
+  text-shadow:
+    0 1px 2px rgba(8,16,11,.85),
+    0 3px 16px rgba(8,16,11,.7),
+    0 0 34px rgba(255,255,255,.38);
+}
+.erou-sub{
+  color:rgba(250,252,246,.95);
+  text-shadow:0 1px 3px rgba(8,16,11,.85),0 2px 16px rgba(8,16,11,.65);
+}
+.erou .btn-secundar{
+  color:#CDEBD5;
+  text-shadow:0 1px 3px rgba(8,16,11,.85),0 2px 12px rgba(8,16,11,.6);
+}
+.erou .btn-secundar:hover{border-color:#CDEBD5}
+.erou .nota-rating{
+  background:rgba(9,18,12,.5);
+  border-color:rgba(246,248,240,.24);
+  color:rgba(246,248,240,.88);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+}
+.erou .nota-rating strong{color:#fff}
+.erou-continut{
+  flex:1;
+  width:100%;
+  display:flex;flex-direction:column;justify-content:center;align-items:flex-start;
+  padding-top:110px;padding-bottom:40px;
+  position:relative;z-index:2;
+}
+.erou-eticheta{
+  opacity:0;animation:apare 1s var(--tranz) .15s forwards;
+}
+.erou h1{
+  font-family:var(--ff-display);
+  font-weight:340;
+  font-size:clamp(2.4rem,5vw,4.3rem);
+  line-height:1.05;
+  letter-spacing:-.02em;
+  max-width:17ch;
+  margin:.3em 0 .32em;
+}
+/* padding-bottom compensat: overflow-ul nu mai taie codițele literelor (g, ș, ț) */
+.erou h1 .rand{display:block;overflow:hidden;padding-bottom:.16em;margin-bottom:-.16em}
+.erou h1 .rand span{
+  display:block;transform:translateY(110%);
+  animation:urca 1.1s var(--tranz) forwards;
+}
+.erou h1 .rand:nth-child(1) span{animation-delay:.25s}
+.erou h1 .rand:nth-child(2) span{animation-delay:.38s}
+.erou h1 .rand:nth-child(3) span{animation-delay:.51s}
+.erou h1 em{font-style:italic;font-weight:400;color:var(--feriga)}
+.erou-sub{
+  max-width:52ch;font-size:clamp(1rem,1.6vw,1.1rem);
+  color:rgba(246,248,240,.88);
+  opacity:0;animation:apare 1s var(--tranz) .75s forwards;
+}
+.erou-actiuni{
+  display:flex;flex-wrap:wrap;gap:14px;align-items:center;
+  margin-top:24px;
+  opacity:0;animation:apare 1s var(--tranz) .95s forwards;
+}
+.btn-primar{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--brad);color:var(--hartie);
+  font-weight:600;font-size:1rem;
+  padding:15px 28px;border-radius:99px;text-decoration:none;
+  box-shadow:0 14px 30px rgba(21,36,25,.22);
+  transition:transform .25s var(--tranz),background .25s,box-shadow .25s;
+}
+.btn-primar:hover{transform:translateY(-2px);background:var(--iaz-adanc);box-shadow:0 18px 38px rgba(22,65,76,.3)}
+.btn-secundar{
+  display:inline-flex;align-items:center;gap:8px;
+  font-weight:600;font-size:1rem;color:var(--iaz);
+  text-decoration:none;padding:15px 10px;
+  border-bottom:2px solid transparent;
+  transition:border-color .25s;
+}
+.btn-secundar:hover{border-color:var(--iaz)}
+.erou-note{
+  display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;
+  opacity:0;animation:apare 1s var(--tranz) 1.15s forwards;
+}
+.nota-rating{
+  display:inline-flex;align-items:baseline;gap:8px;
+  background:var(--alb-apa);
+  border:1px solid var(--linie);
+  border-radius:12px;padding:10px 16px;
+  font-size:.88rem;color:rgba(31,51,39,.75);
+}
+.nota-rating strong{
+  font-family:var(--ff-display);font-size:1.25rem;font-weight:560;
+  color:var(--brad);
+}
+.nota-rating .stele{color:var(--galbenele);letter-spacing:1px;font-size:.8rem}
+
+/* ---------- IAZUL (semnătura) ---------- */
+.iaz-banda{
+  position:relative;z-index:1;
+  margin-top:auto;
+  line-height:0;
+}
+.iaz-banda svg{width:100%;height:clamp(160px,24vw,250px);display:block}
+.peste{animation:inoata var(--durata,30s) linear infinite;animation-delay:var(--start,0s)}
+.peste-corp{animation:balans 2.6s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:center}
+@keyframes inoata{
+  from{transform:translateX(-16%)}
+  to{transform:translateX(116%)}
+}
+.peste.invers{animation-name:inoata-invers}
+@keyframes inoata-invers{
+  from{transform:translateX(116%) }
+  to{transform:translateX(-16%)}
+}
+@keyframes balans{
+  from{transform:translateY(0) rotate(-1.6deg)}
+  to{transform:translateY(5px) rotate(1.6deg)}
+}
+.nufar{animation:leagana 6s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:center}
+.nufar:nth-of-type(2n){animation-duration:7.5s;animation-delay:-2s}
+@keyframes leagana{
+  from{transform:rotate(-2deg) translateX(0)}
+  to{transform:rotate(2deg) translateX(6px)}
+}
+.cerc-apa circle{
+  animation:unda 5s ease-out infinite;
+  animation-delay:var(--u,0s);
+  transform-origin:center;transform-box:fill-box;
+}
+@keyframes unda{
+  0%{transform:scale(.2);opacity:.7}
+  70%{transform:scale(1);opacity:0}
+  100%{transform:scale(1);opacity:0}
+}
+@keyframes apare{to{opacity:1}}
+@keyframes urca{to{transform:translateY(0)}}
+
+/* ---------- fâșie de fapte ---------- */
+.fapte{
+  background:var(--iaz-adanc);
+  color:var(--alb-apa);
+  padding:26px 0;
+}
+.fapte-grila{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
+}
+.fapt{
+  display:flex;align-items:center;gap:13px;
+  font-size:.94rem;line-height:1.35;
+}
+.fapt svg{width:26px;height:26px;flex-shrink:0;stroke:var(--galbenele)}
+.fapt strong{display:block;font-weight:600}
+.fapt span{opacity:.72;font-size:.85rem}
+@media(max-width:880px){.fapte-grila{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.fapte-grila{grid-template-columns:1fr 1fr;gap:14px}.fapt{font-size:.85rem}}
+
+/* ---------- despre ---------- */
+.despre{padding:clamp(80px,11vw,140px) 0}
+.despre-grila{
+  display:grid;grid-template-columns:1.05fr .95fr;
+  gap:clamp(34px,6vw,80px);align-items:center;
+}
+.despre-text p{margin-bottom:1.1em;color:rgba(31,51,39,.82)}
+.despre-text p.mare{
+  font-family:var(--ff-display);font-weight:380;
+  font-size:clamp(1.2rem,2vw,1.45rem);line-height:1.4;
+  color:var(--brad);
+}
+.foto{
+  position:relative;border-radius:18px;overflow:hidden;
+  background:linear-gradient(150deg,var(--hartie-2),#D5DEC2 55%,#BFCDAC);
+  aspect-ratio:4/5;
+  box-shadow:0 24px 60px rgba(21,36,25,.18);
+}
+.foto img{width:100%;height:100%;object-fit:cover}
+.foto-adnotare{
+  position:absolute;left:16px;bottom:16px;
+  background:rgba(246,248,240,.92);border:1px solid var(--linie);
+  border-radius:10px;padding:9px 16px;
+  backdrop-filter:blur(6px);
+  box-shadow:0 12px 28px rgba(21,36,25,.14);
+  font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--brad);
+}
+.foto-adnotare b{color:var(--iaz)}
+@media(max-width:880px){
+  .despre-grila{grid-template-columns:1fr}
+  .foto{aspect-ratio:4/3}
+  .foto-adnotare{left:12px}
+}
+
+/* ---------- grădina ---------- */
+.gradina{
+  background:
+    radial-gradient(110% 80% at 90% 0%,rgba(46,107,119,.35),transparent 55%),
+    var(--brad-adanc);
+  color:var(--alb-apa);
+  padding:clamp(80px,11vw,140px) 0;
+  position:relative;overflow:hidden;
+}
+.gradina .eticheta{color:var(--galbenele)}
+.gradina .eticheta::before{background:var(--galbenele)}
+.gradina .titlu-sectiune em{color:#8FC7CF}
+.gradina-intro{max-width:56ch;color:rgba(246,248,240,.72);margin-bottom:clamp(36px,5vw,60px)}
+.gradina-grila{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+}
+.card-gradina{
+  background:rgba(246,248,240,.05);
+  border:1px solid rgba(246,248,240,.12);
+  border-radius:16px;
+  padding:26px 22px 24px;
+  transition:background .35s,transform .35s var(--tranz),border-color .35s;
+  cursor:default;
+}
+.card-gradina:hover{
+  background:rgba(246,248,240,.09);
+  border-color:rgba(220,154,62,.45);
+  transform:translateY(-5px);
+}
+.card-gradina svg{
+  width:38px;height:38px;stroke:var(--galbenele);margin-bottom:16px;
+}
+.card-gradina h3{
+  font-family:var(--ff-display);font-weight:460;font-size:1.22rem;
+  margin-bottom:8px;letter-spacing:.005em;
+}
+.card-gradina p{font-size:.92rem;color:rgba(246,248,240,.66);line-height:1.55}
+@media(max-width:960px){.gradina-grila{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.gradina-grila{grid-template-columns:1fr}}
+
+/* ---------- galerie ---------- */
+.galerie{padding:clamp(80px,11vw,130px) 0 clamp(60px,8vw,90px)}
+.galerie-cap{
+  display:flex;align-items:flex-end;justify-content:space-between;gap:20px;
+  margin-bottom:34px;flex-wrap:wrap;
+}
+.galerie-hint{
+  font-size:.85rem;font-weight:500;color:rgba(31,51,39,.6);
+}
+.galerie-banda{
+  display:grid;
+  grid-auto-flow:column;
+  grid-auto-columns:clamp(240px,30vw,360px);
+  gap:18px;
+  overflow-x:auto;
+  padding:6px 6px 26px;
+  scroll-snap-type:x mandatory;
+  scrollbar-width:thin;
+  scrollbar-color:var(--feriga) transparent;
+}
+.galerie-banda::-webkit-scrollbar{height:8px}
+.galerie-banda::-webkit-scrollbar-thumb{background:var(--feriga);border-radius:8px}
+.rama{
+  scroll-snap-align:start;
+  border-radius:14px;overflow:hidden;position:relative;
+  aspect-ratio:3/4;
+  background:var(--gradient,linear-gradient(160deg,#DDE5C8,#B9CBA4));
+  border:1px solid var(--linie);
+  display:flex;align-items:flex-end;
+  transition:transform .35s var(--tranz),box-shadow .35s;
+}
+.rama:hover{transform:translateY(-6px);box-shadow:0 22px 44px rgba(21,36,25,.18)}
+.rama img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.rama figcaption{
+  position:relative;z-index:1;
+  width:100%;
+  padding:14px 16px;
+  background:linear-gradient(transparent,rgba(21,36,25,.72));
+  color:var(--alb-apa);
+  font-size:.85rem;font-weight:600;letter-spacing:.04em;
+}
+.rama .semn-foto{
+  position:absolute;top:12px;right:12px;
+  background:rgba(246,248,240,.85);
+  border-radius:99px;padding:4px 12px;
+  font-size:.72rem;font-weight:600;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--feriga);
+}
+
+/* ---------- camere ---------- */
+.camere{
+  background:var(--hartie-2);
+  padding:clamp(80px,11vw,140px) 0;
+}
+.camere-grila{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:22px;
+  margin-top:10px;
+}
+.card-camera{
+  background:var(--alb-apa);
+  border:1px solid var(--linie);
+  border-radius:18px;overflow:hidden;
+  display:flex;flex-direction:column;
+  transition:transform .35s var(--tranz),box-shadow .35s;
+}
+.card-camera:hover{transform:translateY(-6px);box-shadow:0 26px 52px rgba(21,36,25,.16)}
+.camera-vizual{
+  aspect-ratio:16/10;position:relative;
+  background:var(--gradient,linear-gradient(150deg,#E3E8D2,#C7D3B0));
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.camera-vizual img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transition:transform .6s var(--tranz);
+}
+.card-camera:hover .camera-vizual img{transform:scale(1.05)}
+.camera-vizual span{
+  font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--feriga);
+}
+.camera-corp{padding:24px 24px 26px;display:flex;flex-direction:column;flex:1}
+.camera-corp h3{
+  font-family:var(--ff-display);font-weight:480;font-size:1.35rem;
+  margin-bottom:6px;
+}
+.camera-corp>p{font-size:.94rem;color:rgba(31,51,39,.72);margin-bottom:16px}
+.camera-dotari{
+  list-style:none;display:flex;flex-wrap:wrap;gap:8px;
+  margin-top:auto;
+}
+.camera-dotari li{
+  font-size:.8rem;font-weight:500;
+  background:var(--hartie);
+  border:1px solid var(--linie);
+  padding:5px 12px;border-radius:99px;
+  color:rgba(31,51,39,.8);
+}
+@media(max-width:960px){.camere-grila{grid-template-columns:1fr;max-width:520px;margin-inline:auto}}
+
+/* ---------- gazde cu blană ---------- */
+.blana{
+  padding:clamp(60px,8vw,90px) 0;
+}
+.blana-caseta{
+  display:flex;align-items:center;gap:clamp(22px,4vw,48px);
+  background:var(--alb-apa);
+  border:1px dashed rgba(74,115,84,.5);
+  border-radius:20px;
+  padding:clamp(26px,4vw,44px);
+}
+.blana-caseta svg{width:clamp(70px,9vw,104px);height:auto;flex-shrink:0;stroke:var(--feriga)}
+.blana-caseta h3{
+  font-family:var(--ff-display);font-weight:460;font-size:clamp(1.35rem,2.4vw,1.8rem);
+  margin-bottom:8px;
+}
+.blana-caseta h3 em{font-style:italic;color:var(--floare)}
+.blana-caseta p{color:rgba(31,51,39,.75);max-width:62ch}
+@media(max-width:640px){.blana-caseta{flex-direction:column;text-align:center}}
+
+/* ---------- recenzii ---------- */
+.recenzii{
+  background:
+    radial-gradient(100% 90% at 10% 0%,rgba(74,115,84,.14),transparent 55%),
+    var(--hartie);
+  padding:clamp(80px,11vw,140px) 0;
+}
+.recenzii-cap{text-align:center;max-width:640px;margin:0 auto clamp(40px,6vw,64px)}
+.scor-mare{
+  display:flex;justify-content:center;gap:clamp(24px,5vw,64px);
+  margin-top:26px;flex-wrap:wrap;
+}
+.scor{text-align:center}
+.scor .numar{
+  font-family:var(--ff-display);font-weight:560;
+  font-size:clamp(2.6rem,5vw,3.6rem);line-height:1;
+  color:var(--brad);
+}
+.scor .numar sub{font-size:.35em;font-weight:420;color:rgba(31,51,39,.55)}
+.scor .sursa{font-size:.85rem;color:rgba(31,51,39,.6);margin-top:6px}
+.scor .stele{color:var(--galbenele);font-size:.9rem;letter-spacing:2px}
+.recenzii-grila{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+}
+.recenzie{
+  background:var(--alb-apa);
+  border:1px solid var(--linie);
+  border-radius:16px;
+  padding:28px 26px;
+  position:relative;
+  display:flex;flex-direction:column;
+  transition:transform .35s var(--tranz),box-shadow .35s;
+}
+.recenzie:hover{transform:translateY(-5px);box-shadow:0 22px 44px rgba(21,36,25,.14)}
+.recenzie::before{
+  content:"„";
+  font-family:var(--ff-display);font-size:3.4rem;line-height:1;
+  color:var(--galbenele);
+  display:block;margin-bottom:6px;
+}
+.recenzie p{
+  font-family:var(--ff-display);font-weight:380;font-style:italic;
+  font-size:1.08rem;line-height:1.5;
+  color:rgba(31,51,39,.88);
+  flex:1;
+}
+.recenzie footer{
+  margin-top:18px;font-size:.84rem;color:rgba(31,51,39,.6);
+  display:flex;align-items:center;gap:8px;
+}
+.recenzie footer::before{
+  content:"";width:22px;height:1.5px;background:var(--feriga);opacity:.5;
+}
+@media(max-width:880px){.recenzii-grila{grid-template-columns:1fr;max-width:560px;margin-inline:auto}}
+
+/* ---------- împrejurimi ---------- */
+.imprejur{
+  background:var(--brad);
+  color:var(--alb-apa);
+  padding:clamp(80px,11vw,140px) 0;
+}
+.imprejur .eticheta{color:var(--galbenele)}
+.imprejur .eticheta::before{background:var(--galbenele)}
+.imprejur .titlu-sectiune em{color:#9BCB9F}
+.imprejur-grila{
+  display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,70px);
+  align-items:start;
+}
+.imprejur-intro{color:rgba(246,248,240,.7);max-width:50ch;margin-bottom:8px}
+.lista-locuri{list-style:none;margin-top:22px}
+.lista-locuri li{
+  display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+  padding:15px 4px;
+  border-bottom:1px solid rgba(246,248,240,.14);
+  transition:padding-left .3s var(--tranz);
+}
+.lista-locuri li:hover{padding-left:12px}
+.lista-locuri .loc{font-weight:600;font-size:1.02rem}
+.lista-locuri .loc small{
+  display:block;font-weight:400;font-size:.83rem;
+  color:rgba(246,248,240,.55);margin-top:2px;
+}
+.lista-locuri .distanta{
+  font-size:.88rem;font-weight:600;letter-spacing:.02em;
+  color:var(--galbenele);white-space:nowrap;
+}
+.harta-caseta{
+  background:rgba(246,248,240,.06);
+  border:1px solid rgba(246,248,240,.14);
+  border-radius:18px;
+  padding:clamp(24px,3.5vw,38px);
+  position:sticky;top:110px;
+}
+.harta-caseta h3{
+  font-family:var(--ff-display);font-weight:460;font-size:1.4rem;margin-bottom:10px;
+}
+.harta-caseta p{color:rgba(246,248,240,.7);font-size:.95rem;margin-bottom:8px}
+.harta-caseta .adresa{
+  font-weight:600;color:var(--alb-apa);font-size:1.02rem;margin:14px 0 20px;
+}
+.btn-harta{
+  display:inline-flex;align-items:center;gap:9px;
+  background:var(--galbenele);color:var(--brad-adanc);
+  font-weight:600;text-decoration:none;
+  padding:13px 24px;border-radius:99px;
+  transition:transform .25s var(--tranz),box-shadow .25s;
+}
+.btn-harta:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(220,154,62,.35)}
+.btn-harta svg{width:16px;height:16px}
+@media(max-width:880px){.imprejur-grila{grid-template-columns:1fr}.harta-caseta{position:static}}
+
+/* ---------- contact ---------- */
+.contact{padding:clamp(90px,12vw,150px) 0 clamp(70px,9vw,110px);text-align:center}
+.contact .titlu-sectiune{max-width:18ch;margin-inline:auto}
+.contact-sub{max-width:46ch;margin:0 auto 34px;color:rgba(31,51,39,.75)}
+.contact-actiuni{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+.btn-whatsapp{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--feriga);color:var(--alb-apa);
+  font-weight:600;font-size:1rem;
+  padding:15px 28px;border-radius:99px;text-decoration:none;
+  transition:transform .25s var(--tranz),background .25s;
+}
+.btn-whatsapp:hover{transform:translateY(-2px);background:#3C6146}
+.btn-whatsapp svg,.btn-primar svg{width:17px;height:17px}
+.contact-tel-mare{
+  margin-top:36px;
+  font-family:var(--ff-display);font-weight:420;
+  font-size:clamp(1.7rem,4vw,2.6rem);
+}
+.contact-tel-mare a{text-decoration:none;color:var(--iaz);transition:color .25s}
+.contact-tel-mare a:hover{color:var(--iaz-adanc)}
+.contact-nota{
+  margin-top:12px;font-size:.85rem;font-weight:500;letter-spacing:.06em;
+  text-transform:uppercase;color:rgba(31,51,39,.55);
+}
+
+/* ---------- subsol ---------- */
+.subsol{
+  background:var(--brad-adanc);color:rgba(246,248,240,.65);
+  padding:34px 0;font-size:.88rem;
+}
+.subsol-grila{
+  display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;
+}
+.subsol .marca-nume{color:var(--alb-apa);font-size:1.1rem}
+.subsol a{color:rgba(246,248,240,.8);text-decoration:none}
+.subsol a:hover{color:var(--galbenele)}
+.subsol-linkuri{display:flex;gap:20px;list-style:none;flex-wrap:wrap}
+
+/* ---------- optimizări mobil ---------- */
+@media(max-width:700px){
+  .erou-foto img{object-position:36% 62%}
+  .erou-foto::after{
+    background:
+      radial-gradient(ellipse 130% 62% at 50% 52%,rgba(9,18,12,.66) 0%,rgba(9,18,12,.38) 55%,rgba(9,18,12,0) 82%),
+      linear-gradient(180deg,rgba(16,30,21,.42) 0%,rgba(16,30,21,.16) 45%,rgba(28,78,90,.6) 84%,#1C4E5A 100%);
+  }
+}
+@media(max-width:640px){
+  body{-webkit-tap-highlight-color:transparent}
+  .invelis{padding:0 18px}
+  .nav{top:10px;width:calc(100% - 20px);padding:8px 14px}
+  .marca svg{width:30px;height:30px}
+  .marca-nume{font-size:1.12rem}
+  .erou-continut{padding-top:92px;padding-bottom:30px}
+  .erou-actiuni{width:100%;margin-top:20px}
+  .erou-actiuni .btn-primar{width:100%;justify-content:center}
+  .erou-actiuni .btn-secundar{padding:10px 4px}
+  .erou-note{margin-top:18px}
+  .nota-rating{padding:8px 12px;font-size:.8rem}
+  .nota-rating strong{font-size:1.05rem}
+  .fapte{padding:20px 0}
+  .fapte-grila{gap:12px}
+  .fapt svg{width:22px;height:22px}
+  .galerie-banda{grid-auto-columns:74vw;gap:14px}
+  .card-gradina{padding:22px 18px 20px}
+  .blana-caseta{padding:24px 18px}
+  .scor-mare{gap:20px}
+  .recenzie{padding:22px 20px}
+  .harta-caseta .btn-harta{width:100%;justify-content:center}
+  .contact-actiuni{width:100%}
+  .contact-actiuni .btn-primar,.contact-actiuni .btn-whatsapp{width:100%;justify-content:center}
+  .lista-locuri li{flex-wrap:wrap;gap:4px 16px}
+  .subsol-grila{flex-direction:column;text-align:center;gap:14px}
+  .subsol-linkuri{justify-content:center}
+}
+.btn-primar:active,.btn-whatsapp:active,.btn-harta:active,.btn-tel:active{transform:scale(.97)}
+
+/* ---------- banner cookie-uri ---------- */
+.cookie-banda{
+  position:fixed;left:16px;bottom:16px;z-index:55;
+  max-width:400px;
+  background:var(--alb-apa);
+  border:1px solid var(--linie);
+  border-radius:16px;
+  padding:20px 22px;
+  box-shadow:0 24px 60px rgba(21,36,25,.25);
+  display:flex;gap:14px;align-items:flex-start;
+  transform:translateY(calc(100% + 32px));
+  transition:transform .55s var(--tranz);
+}
+.cookie-banda.vizibil{transform:translateY(0)}
+.cookie-banda svg{width:30px;height:30px;flex-shrink:0;stroke:var(--feriga);margin-top:2px}
+.cookie-banda h3{
+  font-family:var(--ff-display);font-weight:480;font-size:1.05rem;margin-bottom:4px;
+}
+.cookie-banda p{font-size:.85rem;line-height:1.5;color:rgba(31,51,39,.75);margin-bottom:14px}
+.cookie-actiuni{display:flex;gap:10px;flex-wrap:wrap}
+.btn-cookie{
+  border:0;cursor:pointer;font-family:var(--ff-text);
+  background:var(--brad);color:var(--hartie);
+  font-weight:600;font-size:.88rem;
+  padding:10px 20px;border-radius:99px;
+  transition:background .25s,transform .25s;
+}
+.btn-cookie:hover{background:var(--iaz-adanc);transform:translateY(-1px)}
+.btn-cookie:active{transform:scale(.97)}
+.btn-cookie-secundar{
+  background:transparent;color:var(--brad);
+  border:1.5px solid rgba(31,51,39,.35);
+}
+.btn-cookie-secundar:hover{background:rgba(31,51,39,.06);border-color:var(--brad)}
+@media(max-width:640px){
+  .cookie-banda{left:12px;right:12px;bottom:12px;max-width:none;padding:16px 18px}
+  .btn-cookie{width:100%;padding:12px 20px}
+  .cookie-actiuni{width:100%}
+}
+
+/* ---------- mișcare redusă ---------- */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}
+  [data-reveal]{opacity:1;transform:none}
+  .erou h1 .rand span{transform:none}
+  .erou-eticheta,.erou-sub,.erou-actiuni,.erou-note{opacity:1}
+}
+</style>
+</head>
+<body>
+
+<!-- ===================== NAVIGAȚIE ===================== -->
+<nav class="nav" id="nav" aria-label="Navigație principală">
+  <a class="marca" href="#sus" aria-label="Pensiunea Lorena — începutul paginii">
+    <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+      <circle cx="20" cy="20" r="18.5" stroke="#4A7354" stroke-width="1.6"/>
+      <path d="M8 24c4-2 7-1 10 .5 3 1.6 6.5 2 10 .2" stroke="#2E6B77" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M14 19c2.8-1.2 4.6-1.1 6.4.2 1 .8 1 2-.2 2.5-1.9.8-4.5.1-6.2-2.7z" fill="#DC9A3E"/>
+      <circle cx="15.4" cy="20.1" r="0.8" fill="#152419"/>
+      <path d="M20 12c1.8-3.4 5.4-3.6 7-1.4-2 .3-3.4 1.5-4 3.2-1.2-.4-2.2-1-3-1.8z" fill="#4A7354"/>
+    </svg>
+    <span class="marca-nume">Pensiunea <span>Lorena</span></span>
+  </a>
+  <ul class="nav-linkuri">
+    <li><a href="#despre">Despre</a></li>
+    <li><a href="#gradina">Grădina</a></li>
+    <li><a href="#galerie">Galerie</a></li>
+    <li><a href="#camere">Camerele</a></li>
+    <li><a href="#recenzii">Recenzii</a></li>
+    <li><a href="#imprejurimi">Împrejurimi</a></li>
+    <li class="nav-li-tel">
+      <a class="btn-tel" href="tel:+40773927082">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+        <span class="nav-tel-text">0773 927 082</span>
+      </a>
+    </li>
+  </ul>
+  <button class="burger" id="burger" aria-expanded="false" aria-controls="meniu-mobil" aria-label="Deschide meniul">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- meniul mobil, pe tot ecranul -->
+<div class="meniu-mobil" id="meniu-mobil">
+  <svg class="meniu-peste" viewBox="0 0 82 26" aria-hidden="true">
+    <path d="M0 13c22-11 48-11 66 0-18 11-44 11-66 0z" fill="rgba(220,154,62,.9)"/>
+    <path d="M66 13l16-9v18z" fill="rgba(220,154,62,.6)"/>
+    <circle cx="12" cy="11" r="2.2" fill="#152419"/>
+  </svg>
+  <a href="#despre" style="--d:.06s">Despre</a>
+  <a href="#gradina" style="--d:.11s">Grădina</a>
+  <a href="#galerie" style="--d:.16s">Galerie</a>
+  <a href="#camere" style="--d:.21s">Camerele</a>
+  <a href="#recenzii" style="--d:.26s">Recenzii</a>
+  <a href="#imprejurimi" style="--d:.31s">Împrejurimi</a>
+  <a href="#contact" style="--d:.36s">Rezervări</a>
+  <a class="meniu-tel" href="tel:+40773927082" style="--d:.42s">Sună: 0773 927 082</a>
+</div>
+
+<!-- ===================== HERO ===================== -->
+<header class="erou" id="sus">
+  <div class="erou-foto" aria-hidden="true">
+    <picture>
+      <source media="(max-width:700px)" srcset="img/gradina-hero-mobil.jpg">
+      <img src="img/gradina-hero.jpg" alt="" fetchpriority="high" decoding="async">
+    </picture>
+  </div>
+  <div class="erou-continut invelis">
+    <div class="erou-caseta">
+      <p class="erou-eticheta">Pensiunea Lorena · Sohodol, Bran</p>
+      <h1>
+        <span class="rand"><span>Cazare cu grădină și iaz,</span></span>
+        <span class="rand"><span>la cinci minute de</span></span>
+        <span class="rand"><span><em>Castelul Bran</em>.</span></span>
+      </h1>
+      <p class="erou-sub">
+        Camere confortabile, grădină amenajată cu iaz și foișor, parcare privată
+        gratuită. Evaluată cu 9,0 din 10 pe Booking.com, de peste 240 de oaspeți.
+      </p>
+      <div class="erou-actiuni">
+        <a class="btn-primar" href="tel:+40773927082">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+          Rezervă: 0773 927 082
+        </a>
+        <a class="btn-secundar" href="#despre">Descoperă pensiunea ↓</a>
+      </div>
+      <div class="erou-note">
+        <span class="nota-rating"><strong>9,0</strong>/10 · Booking.com · 241 recenzii</span>
+        <span class="nota-rating"><strong>4,7</strong><span class="stele" aria-hidden="true">★★★★★</span> Google · 163 recenzii</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- semnătura paginii: iazul animat -->
+  <div class="iaz-banda" aria-hidden="true">
+    <svg viewBox="0 0 1440 240" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="apa" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#1C4E5A"/>
+          <stop offset="1" stop-color="#16414C"/>
+        </linearGradient>
+      </defs>
+      <!-- apa continuă gradientul foto de deasupra -->
+      <rect width="1440" height="240" fill="url(#apa)"/>
+      <!-- cercuri de apă -->
+      <g class="cerc-apa" fill="none" stroke="rgba(246,248,240,.5)" stroke-width="1.5">
+        <circle cx="300" cy="120" r="26" style="--u:0s"/>
+        <circle cx="760" cy="170" r="30" style="--u:1.6s"/>
+        <circle cx="1150" cy="105" r="22" style="--u:3.1s"/>
+        <circle cx="520" cy="90" r="18" style="--u:2.2s"/>
+      </g>
+      <!-- pești -->
+      <g class="peste" style="--durata:34s;--start:-6s">
+        <g transform="translate(0 120)">
+          <g class="peste-corp">
+            <path d="M0 0c22-11 48-11 66 0-18 11-44 11-66 0z" fill="rgba(220,154,62,.85)"/>
+            <path d="M66 0l16-9v18z" fill="rgba(220,154,62,.65)"/>
+            <circle cx="12" cy="-2" r="2.2" fill="#16414C"/>
+          </g>
+        </g>
+      </g>
+      <g class="peste invers" style="--durata:27s;--start:-14s">
+        <g transform="translate(0 175) scale(-.8 .8)">
+          <g class="peste-corp">
+            <path d="M0 0c22-11 48-11 66 0-18 11-44 11-66 0z" fill="rgba(246,248,240,.6)"/>
+            <path d="M66 0l16-9v18z" fill="rgba(246,248,240,.42)"/>
+            <circle cx="12" cy="-2" r="2.4" fill="#16414C"/>
+          </g>
+        </g>
+      </g>
+      <g class="peste" style="--durata:44s;--start:-25s">
+        <g transform="translate(0 90) scale(.6)">
+          <g class="peste-corp">
+            <path d="M0 0c22-11 48-11 66 0-18 11-44 11-66 0z" fill="rgba(192,112,95,.75)"/>
+            <path d="M66 0l16-9v18z" fill="rgba(192,112,95,.55)"/>
+            <circle cx="12" cy="-2" r="2.6" fill="#16414C"/>
+          </g>
+        </g>
+      </g>
+      <!-- nuferi: grupul exterior poartă poziția, cel interior animația -->
+      <g transform="translate(180 52)">
+        <g class="nufar">
+          <ellipse rx="34" ry="12" fill="#4A7354"/>
+          <path d="M0 0L26 -7A34 12 0 0 1 26 7z" fill="#3C6146"/>
+        </g>
+      </g>
+      <g transform="translate(980 60)">
+        <g class="nufar">
+          <ellipse rx="42" ry="14" fill="#4A7354"/>
+          <path d="M0 0L32 -8A42 14 0 0 1 32 8z" fill="#3C6146"/>
+          <path d="M-6 -10c-2-8 4-14 8-14s10 6 8 14c5-4 12-2 12 4 0 5-6 8-12 6 2 6-3 10-8 10s-10-4-8-10c-6 2-12-1-12-6 0-6 7-8 12-4z" fill="#F6F8F0" opacity=".92"/>
+          <circle cx="2" cy="-8" r="3.4" fill="#DC9A3E"/>
+        </g>
+      </g>
+      <g transform="translate(1330 70)">
+        <g class="nufar">
+          <ellipse rx="30" ry="11" fill="#4A7354"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+</header>
+
+<!-- ===================== FÂȘIA DE FAPTE ===================== -->
+<section class="fapte" aria-label="Pe scurt">
+  <div class="invelis fapte-grila">
+    <div class="fapt">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg>
+      <div><strong>Parcare privată</strong><span>gratuită, în curte</span></div>
+    </div>
+    <div class="fapt">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0M12 19.5h.01"/></svg>
+      <div><strong>Wi-Fi gratuit</strong><span>în toată pensiunea</span></div>
+    </div>
+    <div class="fapt">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 3h16v4a8 8 0 0 1-16 0zM6 21h12M12 15v6"/></svg>
+      <div><strong>Bucătărie comună</strong><span>complet utilată, cafea gratuită</span></div>
+    </div>
+    <div class="fapt">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="4" r="2"/><circle cx="18" cy="8" r="2"/><circle cx="20" cy="16" r="2"/><path d="M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.8 1.2c-.4-1-1.5-1.6-2.6-1.9A3.5 3.5 0 0 1 5.2 11 5 5 0 0 1 9 10z"/></svg>
+      <div><strong>Pet friendly</strong><span>animale de companie acceptate</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DESPRE ===================== -->
+<section class="despre" id="despre">
+  <div class="invelis despre-grila">
+    <div class="despre-text">
+      <span class="eticheta" data-reveal>Despre pensiune</span>
+      <h2 class="titlu-sectiune" data-reveal style="--intarziere:.08s">Liniște și confort, la <em>marginea</em> Branului.</h2>
+      <p class="mare" data-reveal style="--intarziere:.16s">
+        Pensiunea Lorena se află în satul Sohodol, într-o zonă liniștită a comunei
+        Bran, la câteva minute de centru și de Castelul Bran.
+      </p>
+      <p data-reveal style="--intarziere:.22s">
+        Oaspeții au la dispoziție camere îngrijite, un living spațios, o bucătărie
+        complet utilată și o grădină amenajată cu iaz ornamental, foișor și zonă
+        de grătar. Parcarea în curte și accesul Wi-Fi sunt gratuite pe toată
+        durata sejurului.
+      </p>
+      <p data-reveal style="--intarziere:.28s">
+        Cele mai frecvente aprecieri din recenziile verificate: <b>curățenia</b>,
+        <b>liniștea</b> și <b>ospitalitatea gazdelor</b>.
+      </p>
+    </div>
+    <div class="foto" data-reveal style="--intarziere:.15s">
+      <img
+        src="img/camera-fereastra.jpg"
+        alt="Cameră la Pensiunea Lorena, cu fereastra spre grădină"
+        loading="lazy">
+      <div class="foto-adnotare">Cameră cu vedere spre <b>grădină</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== GRĂDINA ===================== -->
+<section class="gradina" id="gradina">
+  <div class="invelis">
+    <span class="eticheta" data-reveal>Spațiile exterioare</span>
+    <h2 class="titlu-sectiune" data-reveal style="--intarziere:.08s">Grădina <em>pensiunii</em>.</h2>
+    <p class="gradina-intro" data-reveal style="--intarziere:.14s">
+      Grădina amenajată este spațiul central al pensiunii — iaz ornamental,
+      foișor, zonă de grătar și locuri de relaxare, toate la dispoziția
+      oaspeților, fără costuri suplimentare.
+    </p>
+    <div class="gradina-grila">
+      <article class="card-gradina" data-reveal>
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 12c4-2 7-2 11 0M4 16c5.5-2.6 10.5-2.6 16 0"/><path d="M13 8c1.6-1 3.4-1 5 .2-1.6 1.2-3.4 1.2-5-.2z"/><circle cx="14" cy="7.6" r=".4"/></svg>
+        <h3>Iazul ornamental</h3>
+        <p>Iaz amenajat cu pești și vegetație acvatică, în mijlocul grădinii.</p>
+      </article>
+      <article class="card-gradina" data-reveal style="--intarziere:.08s">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V11l8-6 8 6v10M4 11h16M9 21v-5a3 3 0 0 1 6 0v5"/></svg>
+        <h3>Foișorul</h3>
+        <p>Spațiu acoperit pentru mese în aer liber, în orice moment al zilei.</p>
+      </article>
+      <article class="card-gradina" data-reveal style="--intarziere:.16s">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h16M6 10c0 6 2.7 8 6 8s6-2 6-8M12 18v3M8 21h8M9 3c-.5 1.5.5 2 0 3.5M13 3c-.5 1.5.5 2 0 3.5"/></svg>
+        <h3>Grătar &amp; bucătărie de vară</h3>
+        <p>Zonă de grătar și bucătărie de vară echipată, disponibile tuturor oaspeților.</p>
+      </article>
+      <article class="card-gradina" data-reveal style="--intarziere:.24s">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21V8M12 8C12 4.5 9.5 3 6.5 3 6.5 6.5 9 8 12 8zM12 11c0-3.5 2.5-5 5.5-5 0 3.5-2.5 5-5.5 5zM5 21h14"/></svg>
+        <h3>Zonele de relaxare</h3>
+        <p>Bănci, șezlonguri și spații umbrite, amenajate în întreaga grădină.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== GALERIE ===================== -->
+<section class="galerie" id="galerie">
+  <div class="invelis">
+    <div class="galerie-cap">
+      <div>
+        <span class="eticheta" data-reveal>Galerie foto</span>
+        <h2 class="titlu-sectiune" data-reveal style="--intarziere:.08s">Pensiunea, în <em>imagini</em>.</h2>
+      </div>
+      <p class="galerie-hint" data-reveal style="--intarziere:.14s">Glisați pentru toate fotografiile →</p>
+    </div>
+    <div class="galerie-banda" data-reveal tabindex="0" aria-label="Galerie foto — glisează orizontal">
+      <figure class="rama">
+        <img src="img/gradina-hero.jpg" alt="Grădina pensiunii, cu terasa de lemn și leagănul" loading="lazy">
+        <figcaption>Grădina și terasa de lemn</figcaption>
+      </figure>
+      <figure class="rama">
+        <img src="img/camera-fereastra.jpg" alt="Cameră cu pat dublu și fereastră spre grădină" loading="lazy">
+        <figcaption>Cameră cu vedere spre grădină</figcaption>
+      </figure>
+      <figure class="rama">
+        <img src="img/living-bucatarie.jpg" alt="Livingul și bucătăria comună, cu cărămidă aparentă" loading="lazy">
+        <figcaption>Livingul și bucătăria oaspeților</figcaption>
+      </figure>
+      <figure class="rama">
+        <img src="img/camera-tablou.jpg" alt="Cameră dublă cu tablou pictat" loading="lazy">
+        <figcaption>Camera dublă</figcaption>
+      </figure>
+      <figure class="rama" style="--gradient:linear-gradient(160deg,#CDE0DC,#8FB7B4)">
+        <span class="semn-foto">foto în curând</span>
+        <figcaption>Iazul ornamental</figcaption>
+      </figure>
+      <figure class="rama" style="--gradient:linear-gradient(160deg,#EAE3CE,#C9BC96)">
+        <span class="semn-foto">foto în curând</span>
+        <figcaption>Foișorul</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CAMERELE ===================== -->
+<section class="camere" id="camere">
+  <div class="invelis">
+    <span class="eticheta" data-reveal>Cazare</span>
+    <h2 class="titlu-sectiune" data-reveal style="--intarziere:.08s">Camere <em>îngrijite</em>, spații comune generoase.</h2>
+    <div class="camere-grila">
+      <!-- [DE CONFIRMAT cu proprietarul: denumirile reale ale camerelor, numărul lor și tarifele] -->
+      <article class="card-camera" data-reveal>
+        <div class="camera-vizual">
+          <img src="img/camera-tablou.jpg" alt="Camera Dublă — pat matrimonial cu tablou pictat deasupra" loading="lazy">
+        </div>
+        <div class="camera-corp">
+          <h3>Camera Dublă</h3>
+          <p>Pat matrimonial, lenjerie proaspătă și decor îngrijit, pentru două persoane.</p>
+          <ul class="camera-dotari">
+            <li>Pat matrimonial</li><li>Wi-Fi</li><li>Încălzire centrală</li><li>Lenjerie proaspătă</li>
+          </ul>
+        </div>
+      </article>
+      <article class="card-camera" data-reveal style="--intarziere:.1s">
+        <div class="camera-vizual">
+          <img src="img/camera-fereastra.jpg" alt="Camera cu vedere la grădină — pat dublu lângă fereastră mare" loading="lazy">
+        </div>
+        <div class="camera-corp">
+          <h3>Camera cu vedere la grădină</h3>
+          <p>Lumină naturală și vedere directă spre grădina pensiunii.</p>
+          <ul class="camera-dotari">
+            <li>Vedere la grădină</li><li>Wi-Fi</li><li>Încălzire centrală</li><li>Fereastră generoasă</li>
+          </ul>
+        </div>
+      </article>
+      <article class="card-camera" data-reveal style="--intarziere:.2s">
+        <div class="camera-vizual">
+          <img src="img/living-bucatarie.jpg" alt="Livingul și bucătăria comună, cu cărămidă aparentă și masă de lemn" loading="lazy">
+        </div>
+        <div class="camera-corp">
+          <h3>Livingul &amp; bucătăria oaspeților</h3>
+          <p>Spațiu comun cu bucătărie complet utilată, la dispoziția tuturor oaspeților.</p>
+          <ul class="camera-dotari">
+            <li>Complet utilată</li><li>Cafea gratuită</li><li>Loc de luat masa</li><li>TV &amp; cablu</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== GAZDELE CU BLANĂ ===================== -->
+<section class="blana" aria-label="Animalele pensiunii">
+  <div class="invelis">
+    <div class="blana-caseta" data-reveal>
+      <svg viewBox="0 0 96 72" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M18 34c-3-6 0-14 5-16 2 4 2 8 1 11M42 34c3-6 0-14-5-16-2 4-2 8-1 11"/>
+        <path d="M30 58c-9 0-16-6-16-14 0-9 7-16 16-16s16 7 16 16c0 8-7 14-16 14z"/>
+        <circle cx="25" cy="42" r="1.4" fill="currentColor"/><circle cx="35" cy="42" r="1.4" fill="currentColor"/>
+        <path d="M30 47l-2.4 2.6M30 47l2.4 2.6M30 47v-1.6M22 49h-6M22 46l-5.6-1.4M38 49h6M38 46l5.6-1.4"/>
+        <path d="M70 22c-4-4-10-3-12 1-2-4-8-5-12-1"/>
+        <path d="M64 58c-8 0-14-5-14-12 0-8 6-14 14-14s14 6 14 14c0 7-6 12-14 12z" transform="translate(8 0)"/>
+        <circle cx="67" cy="43" r="1.4" fill="currentColor"/><circle cx="77" cy="43" r="1.4" fill="currentColor"/>
+        <path d="M72 48c1.4 1.8 3.4 1.8 4.8 0M72 48c-1.4 1.8-3.4 1.8-4.8 0M72 48v-2"/>
+        <path d="M86 30c4 2 6 7 4 11"/>
+      </svg>
+      <div>
+        <h3>Pensiune <em>pet friendly</em>.</h3>
+        <p>
+          Animalele de companie sunt binevenite. În curte veți întâlni și
+          animalele casei — pisici și câini prietenoși, obișnuiți cu oaspeții.
+          Menționați la rezervare dacă veniți însoțiți de un animal de companie.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== RECENZII ===================== -->
+<section class="recenzii" id="recenzii">
+  <div class="invelis">
+    <div class="recenzii-cap">
+      <span class="eticheta" data-reveal>Recenzii</span>
+      <h2 class="titlu-sectiune" data-reveal style="--intarziere:.08s">Evaluări <em>verificate</em> ale oaspeților.</h2>
+      <div class="scor-mare" data-reveal style="--intarziere:.16s">
+        <div class="scor">
+          <div class="numar" data-numar="9.0" data-zecimale="1">0<sub>/10</sub></div>
+          <div class="sursa">Booking.com · 241 recenzii</div>
+        </div>
+        <div class="scor">
+          <div class="numar" data-numar="4.7" data-zecimale="1">0<sub>/5</sub></div>
+          <div class="stele" aria-hidden="true">★★★★★</div>
+          <div class="sursa">Google · 163 recenzii</div>
+        </div>
+      </div>
+    </div>
+    <div class="recenzii-grila">
+      <blockquote class="recenzie" data-reveal>
+        <p>Un loc foarte frumos și foarte liniștit. Grădina arată superb, cu un mic iaz cu pești.</p>
+        <footer>oaspete · recenzie Google</footer>
+      </blockquote>
+      <blockquote class="recenzie" data-reveal style="--intarziere:.1s">
+        <p>Locație frumoasă, gazdă minunată și un raport calitate–preț foarte bun.</p>
+        <footer>oaspete · recenzie Google</footer>
+      </blockquote>
+      <blockquote class="recenzie" data-reveal style="--intarziere:.2s">
+        <p>Camere curate, decorate cu drag, paturi confortabile — unul dintre cele mai primitoare locuri în care am stat.</p>
+        <footer>oaspete · recenzie Booking.com</footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ÎMPREJURIMI ===================== -->
+<section class="imprejur" id="imprejurimi">
+  <div class="invelis">
+    <span class="eticheta" data-reveal>Împrejurimi</span>
+    <h2 class="titlu-sectiune" data-reveal style="--intarziere:.08s">În inima zonei <em>Bran – Moieciu</em>.</h2>
+    <div class="imprejur-grila">
+      <div>
+        <p class="imprejur-intro" data-reveal style="--intarziere:.14s">
+          Pensiunea se află în Sohodol, în partea liniștită a comunei Bran —
+          aproape de principalele obiective turistice ale zonei, dar departe de
+          aglomerația centrului.
+        </p>
+        <!-- [DE VERIFICAT distanțele exacte cu proprietarul] -->
+        <ul class="lista-locuri">
+          <li data-reveal>
+            <span class="loc">Castelul Bran<small>cel mai vizitat obiectiv al zonei</small></span>
+            <span class="distanta">~5 min cu mașina</span>
+          </li>
+          <li data-reveal style="--intarziere:.06s">
+            <span class="loc">Centrul Branului<small>restaurante și magazine</small></span>
+            <span class="distanta">~4 min</span>
+          </li>
+          <li data-reveal style="--intarziere:.12s">
+            <span class="loc">Cheile Moieciului<small>traseu ușor de plimbare</small></span>
+            <span class="distanta">~15 min</span>
+          </li>
+          <li data-reveal style="--intarziere:.18s">
+            <span class="loc">Piatra Craiului<small>trasee montane marcate</small></span>
+            <span class="distanta">~25 min</span>
+          </li>
+          <li data-reveal style="--intarziere:.24s">
+            <span class="loc">Brașov<small>centrul istoric</small></span>
+            <span class="distanta">~40 min</span>
+          </li>
+        </ul>
+      </div>
+      <aside class="harta-caseta" data-reveal style="--intarziere:.2s">
+        <h3>Localizare</h3>
+        <p>Acces facil din drumul principal, cu parcare privată în curte.</p>
+        <p class="adresa">Strada Sextil Pușcariu 83,<br>Sohodol – Bran, jud. Brașov</p>
+        <a class="btn-harta" href="https://www.google.com/maps/place/Pensiunea+Lorena/@45.5267106,25.3718262,17z" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Deschide în Google Maps
+        </a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section class="contact" id="contact">
+  <div class="invelis">
+    <span class="eticheta" data-reveal>Rezervări</span>
+    <h2 class="titlu-sectiune" data-reveal style="--intarziere:.08s">Rezervări <em>directe</em>, fără comisioane.</h2>
+    <p class="contact-sub" data-reveal style="--intarziere:.14s">
+      Rezervările se fac telefonic sau pe WhatsApp. Răspundem prompt și vă
+      recomandăm camera potrivită pentru sejurul dumneavoastră.
+    </p>
+    <div class="contact-actiuni" data-reveal style="--intarziere:.2s">
+      <a class="btn-primar" href="tel:+40773927082">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+        Sună acum
+      </a>
+      <a class="btn-whatsapp" href="https://wa.me/40773927082?text=Bun%C4%83%20ziua!%20A%C8%99%20dori%20s%C4%83%20rezerv%20o%20camer%C4%83%20la%20Pensiunea%20Lorena." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.7-1.3 1.3-1.8 1.3-.5.1-1 .3-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5s.8 1.9.8 2c.1.1.1.3 0 .5l-.4.6c-.2.2-.3.4-.1.7.2.3.8 1.4 1.8 2.2 1.3 1.1 2.3 1.5 2.7 1.6.3.2.5.1.7-.1l.9-1c.2-.3.4-.2.7-.1l2 .9c.3.2.5.3.6.4 0 .1 0 .7-.3 1z"/></svg>
+        Scrie pe WhatsApp
+      </a>
+    </div>
+    <p class="contact-tel-mare" data-reveal style="--intarziere:.26s">
+      <a href="tel:+40773927082">0773 927 082</a>
+    </p>
+    <p class="contact-nota" data-reveal style="--intarziere:.3s">Pensiunea Lorena · Strada Sextil Pușcariu 83, Sohodol – Bran</p>
+  </div>
+</section>
+
+<!-- ===================== SUBSOL ===================== -->
+<footer class="subsol">
+  <div class="invelis subsol-grila">
+    <span class="marca-nume">Pensiunea <span style="color:var(--galbenele);font-style:italic">Lorena</span></span>
+    <ul class="subsol-linkuri">
+      <li><a href="#gradina">Grădina</a></li>
+      <li><a href="#camere">Camerele</a></li>
+      <li><a href="#recenzii">Recenzii</a></li>
+      <li><a href="#contact">Rezervări</a></li>
+    </ul>
+    <span>© 2026 Pensiunea Lorena · Sohodol, Bran</span>
+  </div>
+</footer>
+
+<!-- banner cookie-uri -->
+<aside class="cookie-banda" id="cookie-banda" role="dialog" aria-label="Informare cookie-uri" aria-hidden="true">
+  <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M21 12a9 9 0 1 1-9.5-8.98c-.4 1.6.4 3.28 1.9 3.98a3.2 3.2 0 0 0 3.6 3.6c.7 1.5 2.4 2.3 4 1.4z"/>
+    <circle cx="8.5" cy="10.5" r=".6" fill="currentColor"/>
+    <circle cx="12" cy="15.5" r=".6" fill="currentColor"/>
+    <circle cx="8" cy="15" r=".5" fill="currentColor"/>
+  </svg>
+  <div>
+    <h3>Acest site folosește cookie-uri</h3>
+    <p>
+      Folosim cookie-uri pentru buna funcționare a site-ului și pentru
+      îmbunătățirea experienței de navigare. Puteți accepta toate cookie-urile
+      sau doar pe cele esențiale.
+    </p>
+    <div class="cookie-actiuni">
+      <button class="btn-cookie" id="cookie-accepta" type="button">Accept toate</button>
+      <button class="btn-cookie btn-cookie-secundar" id="cookie-esentiale" type="button">Doar esențiale</button>
+    </div>
+  </div>
+</aside>
+
+<script>
+// dezvăluire la scroll
+const observator = new IntersectionObserver((intrari) => {
+  intrari.forEach(i => {
+    if (i.isIntersecting) {
+      i.target.classList.add('vizibil');
+      observator.unobserve(i.target);
+    }
+  });
+}, { threshold: 0.14 });
+document.querySelectorAll('[data-reveal]').forEach(el => observator.observe(el));
+
+// navigație compactă după scroll
+const nav = document.getElementById('nav');
+addEventListener('scroll', () => {
+  nav.classList.toggle('compact', scrollY > 40);
+}, { passive: true });
+
+// meniul mobil
+const burger = document.getElementById('burger');
+const meniu = document.getElementById('meniu-mobil');
+const comutaMeniu = (deschis) => {
+  meniu.classList.toggle('deschis', deschis);
+  burger.setAttribute('aria-expanded', deschis);
+  burger.setAttribute('aria-label', deschis ? 'Închide meniul' : 'Deschide meniul');
+  document.body.style.overflow = deschis ? 'hidden' : '';
+};
+burger.addEventListener('click', () => comutaMeniu(!meniu.classList.contains('deschis')));
+meniu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => comutaMeniu(false)));
+addEventListener('keydown', e => { if (e.key === 'Escape' && meniu.classList.contains('deschis')) comutaMeniu(false); });
+
+// evidențierea secțiunii curente în meniu (scrollspy)
+const linkuriNav = [...document.querySelectorAll('.nav-linkuri a[href^="#"]')];
+const sectiuni = linkuriNav.map(a => document.querySelector(a.hash)).filter(Boolean);
+const obsSectiune = new IntersectionObserver((intrari) => {
+  intrari.forEach(i => {
+    if (!i.isIntersecting) return;
+    linkuriNav.forEach(a => a.classList.toggle('activ', a.hash === '#' + i.target.id));
+  });
+}, { rootMargin: '-35% 0px -55% 0px' });
+sectiuni.forEach(s => obsSectiune.observe(s));
+
+// bannerul de cookie-uri
+const cookieBanda = document.getElementById('cookie-banda');
+if (!localStorage.getItem('lorena-cookie-info')) {
+  setTimeout(() => {
+    cookieBanda.classList.add('vizibil');
+    cookieBanda.setAttribute('aria-hidden', 'false');
+  }, 1200);
+}
+const inchideCookie = (alegere) => {
+  localStorage.setItem('lorena-cookie-info', alegere);
+  cookieBanda.classList.remove('vizibil');
+  cookieBanda.setAttribute('aria-hidden', 'true');
+};
+document.getElementById('cookie-accepta').addEventListener('click', () => inchideCookie('toate'));
+document.getElementById('cookie-esentiale').addEventListener('click', () => inchideCookie('esentiale'));
+
+// numărători animate pentru scoruri
+const prefMiscareRedusa = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const obsNumar = new IntersectionObserver((intrari) => {
+  intrari.forEach(i => {
+    if (!i.isIntersecting) return;
+    obsNumar.unobserve(i.target);
+    const tinta = parseFloat(i.target.dataset.numar);
+    const zecimale = +i.target.dataset.zecimale || 0;
+    const sufix = i.target.querySelector('sub')?.outerHTML || '';
+    if (prefMiscareRedusa) {
+      i.target.innerHTML = tinta.toFixed(zecimale).replace('.', ',') + sufix;
+      return;
+    }
+    const start = performance.now(), durata = 1400;
+    const pas = (acum) => {
+      const t = Math.min((acum - start) / durata, 1);
+      const usor = 1 - Math.pow(1 - t, 3);
+      i.target.innerHTML = (tinta * usor).toFixed(zecimale).replace('.', ',') + sufix;
+      if (t < 1) requestAnimationFrame(pas);
+    };
+    requestAnimationFrame(pas);
+  });
+}, { threshold: 0.6 });
+document.querySelectorAll('[data-numar]').forEach(el => obsNumar.observe(el));
+</script>
+</body>
+</html>
